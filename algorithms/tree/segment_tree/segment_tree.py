@@ -5,7 +5,7 @@ function takes 2 values and returns a same type value
 '''
 class SegmentTree:
     def __init__(self,arr,function):
-        self.segment = [0 for x in range(3*len(arr)+3)]
+        self.segment = [0 for _ in range(3*len(arr)+3)]
         self.arr = arr
         self.fn = function
         self.make_tree(0,0,len(arr)-1)
@@ -27,9 +27,7 @@ class SegmentTree:
         val2 = self.__query(2*i+2,int((L+R+2)/2),R,l,r)
         print(L,R," returned ",val1,val2)
         if val1 != None:
-            if val2 != None:
-                return self.fn(val1,val2)
-            return val1
+            return self.fn(val1,val2) if val2 != None else val1
         return val2
         
 

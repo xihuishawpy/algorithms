@@ -16,7 +16,7 @@ class Graph:
         self.graph = {}
 
         # To store transitive closure
-        self.closure = [[0 for j in range(vertices)] for i in range(vertices)]
+        self.closure = [[0 for _ in range(vertices)] for _ in range(vertices)]
 
     def add_edge(self, source, target):
         """

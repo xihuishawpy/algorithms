@@ -34,7 +34,7 @@ def maze_search(maze):
 
     if maze[initial_x][initial_y] == BLOCKED:
         return -1
-    
+
     directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 
     height, width = len(maze), len(maze[0])
@@ -43,7 +43,7 @@ def maze_search(maze):
 
     queue = deque([(initial_x, initial_y, 0)])
 
-    is_visited = [[UNVISITED for w in range(width)] for h in range(height)]
+    is_visited = [[UNVISITED for _ in range(width)] for _ in range(height)]
     is_visited[initial_x][initial_y] = VISITED
 
     while queue:

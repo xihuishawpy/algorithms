@@ -62,8 +62,8 @@ class TestPermuteAndAnagram(unittest.TestCase):
     def test_permute_iter(self):
         it = permute_iter("abc")
         perms = ['abc', 'bac', 'bca', 'acb', 'cab', 'cba']
-        for i in range(len(perms)):
-            self.assertEqual(perms[i], next(it))
+        for perm in perms:
+            self.assertEqual(perm, next(it))
 
     def test_angram(self):
         self.assertTrue(anagram('apple', 'pleap'))
@@ -100,10 +100,7 @@ class TestArrayCombinationSum(unittest.TestCase):
 class TestCombinationSum(unittest.TestCase):
 
     def check_sum(self, nums, target):
-        if sum(nums) == target:
-            return (True, nums)
-        else:
-            return (False, nums)
+        return (True, nums) if sum(nums) == target else (False, nums)
 
     def test_combination_sum(self):
         candidates1 = [2, 3, 6, 7]

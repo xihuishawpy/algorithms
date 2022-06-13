@@ -6,7 +6,7 @@ def __is_balanced_recursive(root):
     """
     O(N) solution
     """
-    return -1 != __get_depth(root)
+    return __get_depth(root) != -1
 
 
 def __get_depth(root):

@@ -7,7 +7,7 @@ class RollingHash:
         self.hash = 0
         self.size_word = size_word
 
-        for i in range(0, size_word):
+        for i in range(size_word):
             #ord maps the character to a number
             #subtract out the ASCII value of "a" to start the indexing at zero
             self.hash += (ord(self.text[i]) - ord("a")+1)*(26**(size_word - i -1))
@@ -40,9 +40,11 @@ def rabin_karp(word, text):
     #word_hash.move_window()
 
     for i in range(len(text) - len(word) + 1):
-        if rolling_hash.hash == word_hash.hash:
-            if rolling_hash.window_text() == word:
-                return i
+        if (
+            rolling_hash.hash == word_hash.hash
+            and rolling_hash.window_text() == word
+        ):
+            return i
         rolling_hash.move_window()
     return None
 

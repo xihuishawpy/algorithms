@@ -20,12 +20,10 @@ def permute(elements):
     """
     if len(elements) <= 1:
         return [elements]
-    else:
-        tmp = []
-        for perm in permute(elements[1:]):
-            for i in range(len(elements)):
-                tmp.append(perm[:i] + elements[0:1] + perm[i:])
-        return tmp
+    tmp = []
+    for perm in permute(elements[1:]):
+        tmp.extend(perm[:i] + elements[:1] + perm[i:] for i in range(len(elements)))
+    return tmp
 
 
 def permute_iter(elements):
@@ -37,7 +35,7 @@ def permute_iter(elements):
     else:
         for perm in permute_iter(elements[1:]):
             for i in range(len(elements)):
-                yield perm[:i] + elements[0:1] + perm[i:]
+                yield perm[:i] + elements[:1] + perm[i:]
 
 
 # DFS Version

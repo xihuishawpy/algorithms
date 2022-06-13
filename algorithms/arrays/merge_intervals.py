@@ -16,28 +16,22 @@ class Interval:
         self.end = end
 
     def __repr__(self):
-        return "Interval ({}, {})".format(self.start, self.end)
+        return f"Interval ({self.start}, {self.end})"
 
     def __iter__(self):
         return iter(range(self.start, self.end))
 
     def __getitem__(self, index):
-        if index < 0:
-            return self.end + index
-        return self.start + index
+        return self.end + index if index < 0 else self.start + index
 
     def __len__(self):
         return self.end - self.start
 
     def __contains__(self, item):
-        if self.start >= item >= self.end:
-            return True
-        return False
+        return self.start >= item >= self.end
 
     def __eq__(self, other):
-        if self.start == other.start and self.end == other.end:
-            return True
-        return False
+        return self.start == other.start and self.end == other.end
 
     def as_list(self):
         """ Return interval as list. """
@@ -57,9 +51,7 @@ class Interval:
     @staticmethod
     def print_intervals(intervals):
         """ Print out the intervals. """
-        res = []
-        for i in intervals:
-            res.append(repr(i))
+        res = [repr(i) for i in intervals]
         print("".join(res))
 
 

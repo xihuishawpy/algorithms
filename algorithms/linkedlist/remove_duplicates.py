@@ -36,7 +36,7 @@ def remove_dups_wothout_set(head):
 def print_linked_list(head):
     string = ""
     while head.next:
-        string += head.val + " -> "
+        string += f"{head.val} -> "
         head = head.next
     string += head.val
     print(string)

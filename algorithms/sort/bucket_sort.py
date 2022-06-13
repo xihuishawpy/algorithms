@@ -5,7 +5,7 @@ def bucket_sort(arr):
     '''
     # The number of buckets and make buckets
     num_buckets = len(arr)
-    buckets = [[] for bucket in range(num_buckets)]
+    buckets = [[] for _ in range(num_buckets)]
     # Assign values into bucket_sort
     for value in arr:
         index = value * num_buckets // (max(arr) + 1)

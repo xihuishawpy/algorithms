@@ -58,46 +58,43 @@ class BST(object):
     def insert(self, data):
         if self.root:
             return self.recur_insert(self.root, data)
-        else:
-            self.root = Node(data)
-            return True
+        self.root = Node(data)
+        return True
 
     def recur_insert(self, root, data):
         if root.data == data:      # The data is already there
             return False
-        elif data < root.data:     # Go to left root
-            if root.left:          # If left root is a node
+        elif data < root.data: # Go to left root
+            if root.left:
                 return self.recur_insert(root.left, data)
-            else:                  # left root is a None
-                root.left = Node(data)
-                return True
-        else:                      # Go to right root
-            if root.right:         # If right root is a node
+            root.left = Node(data)
+            return True
+        else:                  # Go to right root
+            if root.right:
                 return self.recur_insert(root.right, data)
-            else:
-                root.right = Node(data)
-                return True
+            root.right = Node(data)
+            return True
 
     """
         Preorder, Postorder, Inorder traversal bst
     """
     def preorder(self, root):
         if root:
-            print(str(root.data), end = ' ')
+            print(root.data, end = ' ')
             self.preorder(root.left)
             self.preorder(root.right)
 
     def inorder(self, root):
         if root:
             self.inorder(root.left)
-            print(str(root.data), end = ' ')
+            print(root.data, end = ' ')
             self.inorder(root.right)
 
     def postorder(self, root):
         if root:
             self.postorder(root.left)
             self.postorder(root.right)
-            print(str(root.data), end = ' ')
+            print(root.data, end = ' ')
 
 """
     The tree is created for testing:

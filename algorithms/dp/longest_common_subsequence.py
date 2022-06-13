@@ -31,7 +31,7 @@ def longest_common_subsequence(s_1, s_2):
     m = len(s_1)
     n = len(s_2)
 
-    mat = [[0] * (n + 1) for i in range(m + 1)]
+    mat = [[0] * (n + 1) for _ in range(m + 1)]
     # mat[i][j] : contains length of LCS of s_1[0..i-1] and s_2[0..j-1]
 
     for i in range(m + 1):

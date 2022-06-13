@@ -23,5 +23,4 @@ def find_missing_number2(nums):
     num_sum = sum(nums)
     n = len(nums)
     total_sum = n*(n+1) // 2
-    missing = total_sum - num_sum
-    return missing
+    return total_sum - num_sum

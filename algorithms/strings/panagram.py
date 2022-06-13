@@ -33,4 +33,4 @@ def panagram(string):
             letters.remove(c.lower())
         except:
             pass
-    return len(letters) == 0
+    return not letters

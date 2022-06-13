@@ -24,10 +24,10 @@ def common_prefix(s1, s2):
         return ""
     k = 0
     while s1[k] == s2[k]:
-        k = k + 1
+        k += 1
         if k >= len(s1) or k >= len(s2):
-            return s1[0:k]
-    return s1[0:k]
+            return s1[:k]
+    return s1[:k]
 
 def longest_common_prefix_v1(strs):
     if not strs:
@@ -46,16 +46,14 @@ def longest_common_prefix_v2(strs):
     for i in range(len(strs[0])):
         for string in strs[1:]:
             if i == len(string) or string[i] != strs[0][i]:
-                return strs[0][0:i]
+                return strs[0][:i]
     return strs[0]
 
 """
 Third solution: Divide and Conquer
 """
 def longest_common_prefix_v3(strs):
-    if not strs:
-        return ""
-    return longest_common(strs, 0, len(strs) -1)
+    return longest_common(strs, 0, len(strs) -1) if strs else ""
 
 def longest_common(strs, left, right):
     if left == right:

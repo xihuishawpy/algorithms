@@ -93,8 +93,6 @@ class TestSuite(unittest.TestCase):
 			Monomial({1: 2, 2: -1}, -1.5)
 		]))
 
-		pass
-
 	def test_polynomial_multiplication(self):
 		self.assertEqual(self.p0 * self.p2, Polynomial([]))
 		self.assertEqual(self.p1 * self.p2, Polynomial([]))

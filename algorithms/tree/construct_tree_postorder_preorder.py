@@ -44,8 +44,8 @@ def construct_tree_util(pre: list, post: list, low: int, high: int, size: int):
 
     if pre_index == -1:
         pre_index = 0
-  
-    
+
+
     #Base case
     if(pre_index >= size or low > high):
         return None
@@ -59,10 +59,7 @@ def construct_tree_util(pre: list, post: list, low: int, high: int, size: int):
 
     #Find the next element of pre[] in post[]
     i = low
-    while i <= high:
-        if(pre[pre_index] == post[i]):
-            break
-
+    while i <= high and pre[pre_index] != post[i]:
         i += 1
 
     #Use index of element present in postorder to divide postorder array

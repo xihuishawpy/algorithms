@@ -67,7 +67,7 @@ def greedy_set_cover(universe, subsets, costs):
         subsets (dict): Subsets of U {S1:elements,S2:elements}
         costs (dict): Costs of each subset in S - {S1:cost, S2:cost...}
     """
-    elements = set(e for s in subsets.keys() for e in subsets[s])
+    elements = {e for s in subsets.keys() for e in subsets[s]}
     # elements don't cover universe -> invalid input for set cover
     if elements != universe:
         return None
@@ -108,8 +108,8 @@ if __name__ == '__main__':
 
     print('Optimal Set Cover:')
     print(optimal_cover)
-    print('Cost = %s' % optimal_cost)
+    print(f'Cost = {optimal_cost}')
 
     print('Greedy Set Cover:')
     print(greedy_cover)
-    print('Cost = %s' % greedy_cost)
+    print(f'Cost = {greedy_cost}')

@@ -25,13 +25,10 @@ def subsets(nums):
     """
     n = len(nums)
     total = 1 << n
-    res = set()
-
-    for i in range(total):
-        subset = tuple(num for j, num in enumerate(nums) if i & 1 << j)
-        res.add(subset)
-
-    return res
+    return {
+        tuple(num for j, num in enumerate(nums) if i & 1 << j)
+        for i in range(total)
+    }
 """
 this explanation is from leet_nik @ leetcode
 This is an amazing solution. Learnt a lot.

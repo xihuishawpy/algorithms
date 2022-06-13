@@ -13,7 +13,7 @@
 def count_paths(m, n):
     if m < 1 or n < 1:
         return -1
-    count = [[None for j in range(n)] for i in range(m)]
+    count = [[None for _ in range(n)] for _ in range(m)]
 
     # Taking care of the edge cases- matrix of size 1xn or mx1
     for i in range(n):

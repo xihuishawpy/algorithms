@@ -28,7 +28,7 @@ def is_bst(root):
 
     stack = []
     pre = None
-    
+
     while root or stack:
         while root:
             stack.append(root)

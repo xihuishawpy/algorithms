@@ -31,11 +31,9 @@ def max_sliding_window(nums, k):
     queue = collections.deque()
     res = []
     for num in nums:
-        if len(queue) < k:
-            queue.append(num)
-        else:
+        if len(queue) >= k:
             res.append(max(queue))
             queue.popleft()
-            queue.append(num)
+        queue.append(num)
     res.append(max(queue))
     return res

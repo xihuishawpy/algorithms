@@ -15,8 +15,7 @@ def postorder(root):
     res = []
     if not root:
         return res
-    stack = []
-    stack.append(root)
+    stack = [root]
     while stack:
         root = stack.pop()
         res_temp.append(root.val)

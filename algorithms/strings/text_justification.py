@@ -62,10 +62,9 @@ def text_justification(words, max_width):
         # if the row is the last
         if index == len(words):
             for word in row_words:
-                row += (word + ' ')
+                row += f'{word} '
             row = row[:-1]
             row += ' ' * (max_width - len(row))
-        # not the last row and more than one word
         elif len(row_words) != 1:
             space_num = max_width - row_len
             space_num_of_each_interval = space_num // (len(row_words) - 1)
@@ -77,7 +76,6 @@ def text_justification(words, max_width):
                 if space_num_rest > 0:
                     row += ' '
                     space_num_rest -= 1
-        # row with only one word
         else:
             row += row_words[0]
             row += ' ' * (max_width - len(row))

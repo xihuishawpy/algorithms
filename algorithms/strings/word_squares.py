@@ -55,9 +55,7 @@ def word_squares(words):
         if len(square) == n:
             squares.append(square)
             return
-        prefix = ""
-        for k in range(len(square)):
-            prefix += square[k][len(square)]
+        prefix = "".join(square[k][len(square)] for k in range(len(square)))
         for word in fulls[prefix]:
             build(square + [word])
     squares = []

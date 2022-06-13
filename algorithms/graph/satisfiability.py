@@ -108,7 +108,7 @@ def solve_sat(formula):
     comp_repr = {}  # An arbitrary representant from each component
 
     for vertex in graph:
-        if not vertex_scc[vertex] in comp_repr:
+        if vertex_scc[vertex] not in comp_repr:
             comp_repr[vertex_scc[vertex]] = vertex
 
     comp_value = {}  # True/False value for each strongly connected component
@@ -121,9 +121,7 @@ def solve_sat(formula):
             (lit, neg) = comp_repr[comp]
             comp_value[vertex_scc[(lit, not neg)]] = True
 
-    value = {var: comp_value[vertex_scc[(var, False)]] for (var, _) in graph}
-
-    return value
+    return {var: comp_value[vertex_scc[(var, False)]] for (var, _) in graph}
 
 
 def main():

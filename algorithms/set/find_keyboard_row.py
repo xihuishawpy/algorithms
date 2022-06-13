@@ -21,7 +21,5 @@ def find_keyboard_row(words):
     ]
     result = []
     for word in words:
-        for key in keyboard:
-            if set(word.lower()).issubset(key):
-                result.append(word)
+        result.extend(word for key in keyboard if set(word.lower()).issubset(key))
     return result

@@ -22,12 +22,12 @@ class TestUnixPath(unittest.TestCase):
     def test_full_path(self):
         file_name = "file_name"
         # Test full path relative
-        expect_path = "{}/{}".format(os.getcwd(), file_name)
+        expect_path = f"{os.getcwd()}/{file_name}"
         self.assertEqual(expect_path, full_path(file_name))
         # Test full path with expanding user
         # ~/file_name
-        expect_path = "{}/{}".format(os.path.expanduser('~'), file_name)
-        self.assertEqual(expect_path, full_path("~/{}".format(file_name)))
+        expect_path = f"{os.path.expanduser('~')}/{file_name}"
+        self.assertEqual(expect_path, full_path(f"~/{file_name}"))
 
     def test_split(self):
         # Test url path

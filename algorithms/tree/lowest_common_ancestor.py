@@ -34,4 +34,4 @@ def lca(root, p, q):
     right = lca(root.right, p, q)
     if left is not None and right is not None:
         return root
-    return left if left else right
+    return left or right

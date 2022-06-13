@@ -49,9 +49,7 @@ def convert_to_list(number: int) -> Node:
     if number >= 0:
         head = Node(0)
         current = head
-        remainder = number % 10
-        quotient = number // 10
-
+        quotient, remainder = divmod(number, 10)
         while quotient != 0:
             current.next = Node(remainder)
             current = current.next

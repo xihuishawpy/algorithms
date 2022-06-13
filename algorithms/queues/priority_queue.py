@@ -12,7 +12,7 @@ class PriorityQueueNode:
         self.priority = priority
 
     def __repr__(self):
-        return "{}: {}".format(self.data, self.priority)
+        return f"{self.data}: {self.priority}"
 
 
 class PriorityQueue:

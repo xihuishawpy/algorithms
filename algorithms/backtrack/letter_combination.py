@@ -34,7 +34,6 @@ def letter_combinations(digits):
     for num in digits:
         tmp = []
         for an in ans:
-            for char in kmaps[num]:
-                tmp.append(an + char)
+            tmp.extend(an + char for char in kmaps[num])
         ans = tmp
     return ans

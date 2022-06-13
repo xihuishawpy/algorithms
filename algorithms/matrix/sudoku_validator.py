@@ -85,7 +85,18 @@ def valid_solution_set(board):
 
     for x in range(3):
         for y in range(3):
-            if set(sum([row[x*3:(x+1)*3] for row in board[y*3:(y+1)*3]], [])) != valid:
+            if (
+                set(
+                    sum(
+                        (
+                            row[x * 3 : (x + 1) * 3]
+                            for row in board[y * 3 : (y + 1) * 3]
+                        ),
+                        [],
+                    )
+                )
+                != valid
+            ):
                 return False
 
     return True

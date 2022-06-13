@@ -281,10 +281,7 @@ class TestPrimeTest(unittest.TestCase):
             checks all prime numbers between 2 up to 100.
             Between 2 up to 100 exists 25 prime numbers!
         """
-        counter = 0
-        for i in range(2, 101):
-            if prime_check(i):
-                counter += 1
+        counter = sum(1 for i in range(2, 101) if prime_check(i))
         self.assertEqual(25, counter)
 
 

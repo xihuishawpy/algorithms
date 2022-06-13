@@ -3,13 +3,12 @@
 # square matrix of size n x n
 def sum_sub_squares(matrix, k):
     n = len(matrix)
-    result = [[0 for i in range(k)] for j in range(k)]
+    result = [[0 for _ in range(k)] for _ in range(k)]
 
     if k > n:
         return
     for i in range(n - k + 1):
-        l = 0
-        for j in range(n - k + 1):
+        for l, j in enumerate(range(n - k + 1)):
             sum = 0
 
             # Calculate and print sum of current sub-square
@@ -18,6 +17,4 @@ def sum_sub_squares(matrix, k):
                     sum += matrix[p][q]
 
             result[i][l] = sum
-            l += 1
-
     return result

@@ -11,7 +11,4 @@ def DFA(transitions, start, final, string):
         else:
             cur = transitions[cur][string[i]]
 
-    for i in range(num_final):
-        if cur == final[i]:
-            return True
-    return False
+    return any(cur == final[i] for i in range(num_final))

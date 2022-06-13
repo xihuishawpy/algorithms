@@ -26,7 +26,7 @@ def int_to_base(num, base):
         res += digit[num % base]
         num //= base
     if is_negative:
-        return '-' + res[::-1]
+        return f'-{res[::-1]}'
     return res[::-1]
 
 
@@ -38,9 +38,11 @@ def base_to_int(str_to_convert, base):
         :rtype: int
     """
 
-    digit = {}
-    for ind, char in enumerate(string.digits + string.ascii_uppercase):
-        digit[char] = ind
+    digit = {
+        char: ind
+        for ind, char in enumerate(string.digits + string.ascii_uppercase)
+    }
+
     multiplier = 1
     res = 0
     for char in str_to_convert[::-1]:

@@ -21,42 +21,40 @@ class RBTree:
         right_node = node.right
         if right_node is None:
             return
+        # right node's left node become the right node of current node
+        node.right = right_node.left
+        if right_node.left is not None:
+            right_node.left.parent = node
+        right_node.parent = node.parent
+        # check the parent case
+        if node.parent is None:
+            self.root = right_node
+        elif node is node.parent.left:
+            node.parent.left = right_node
         else:
-            # right node's left node become the right node of current node
-            node.right = right_node.left
-            if right_node.left is not None:
-                right_node.left.parent = node
-            right_node.parent = node.parent
-            # check the parent case
-            if node.parent is None:
-                self.root = right_node
-            elif node is node.parent.left:
-                node.parent.left = right_node
-            else:
-                node.parent.right = right_node
-            right_node.left = node
-            node.parent = right_node
+            node.parent.right = right_node
+        right_node.left = node
+        node.parent = right_node
 
     def right_rotate(self, node):
         # set the node as the right child node of the current node's left node
         left_node = node.left
         if left_node is None:
             return
+        # left node's right  node become the left node of current node
+        node.left = left_node.right
+        if left_node.right is not None:
+            left_node.right.parent = node
+        left_node.parent = node.parent
+        # check the parent case
+        if node.parent is None:
+            self.root = left_node
+        elif node is node.parent.left:
+            node.parent.left = left_node
         else:
-            # left node's right  node become the left node of current node
-            node.left = left_node.right
-            if left_node.right is not None:
-                left_node.right.parent = node
-            left_node.parent = node.parent
-            # check the parent case
-            if node.parent is None:
-                self.root = left_node
-            elif node is node.parent.left:
-                node.parent.left = left_node
-            else:
-                node.parent.right = left_node
-            left_node.right = node
-            node.parent = left_node
+            node.parent.right = left_node
+        left_node.right = node
+        node.parent = left_node
 
     def insert(self, node):
         # the inserted node's color is default is red
@@ -65,10 +63,7 @@ class RBTree:
         # find the position of inserted node
         while root is not None:
             insert_node_parent = root
-            if insert_node_parent.val < node.val:
-                root = root.right
-            else:
-                root = root.left
+            root = root.right if insert_node_parent.val < node.val else root.left
         # set the n ode's parent node
         node.parent = insert_node_parent
         if insert_node_parent is None:

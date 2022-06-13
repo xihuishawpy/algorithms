@@ -27,7 +27,7 @@ def max_profit_naive(prices):
     :rtype: int
     """
     max_so_far = 0
-    for i in range(0, len(prices) - 1):
+    for i in range(len(prices) - 1):
         for j in range(i + 1, len(prices)):
             max_so_far = max(max_so_far, prices[j] - prices[i])
     return max_so_far

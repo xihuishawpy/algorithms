@@ -26,8 +26,14 @@ def cosine_similarity(vec1, vec2):
     :type vec2: list
     """
     if len(vec1) != len(vec2):
-        raise ValueError("The two vectors must be the same length. Got shape " + str(len(vec1))
-                        + " and " + str(len(vec2)))
+        raise ValueError(
+            (
+                f"The two vectors must be the same length. Got shape {len(vec1)}"
+                + " and "
+            )
+            + str(len(vec2))
+        )
+
 
     norm_a = _l2_distance(vec1)
     norm_b = _l2_distance(vec2)

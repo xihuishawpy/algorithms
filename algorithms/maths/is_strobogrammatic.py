@@ -18,7 +18,7 @@ def is_strobogrammatic(num):
     i = 0
     j = len(num) - 1
     while i <= j:
-        if comb.find(num[i]+num[j]) == -1:
+        if num[i] + num[j] not in comb:
             return False
         i += 1
         j -= 1

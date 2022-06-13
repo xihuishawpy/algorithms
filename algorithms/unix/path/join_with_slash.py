@@ -14,5 +14,4 @@ def join_with_slash(base, suffix):
     base = base.rstrip('/')
     # Remove / leading
     suffix = suffix.lstrip('/').rstrip()
-    full_path = "{}/{}".format(base, suffix)
-    return full_path
+    return f"{base}/{suffix}"

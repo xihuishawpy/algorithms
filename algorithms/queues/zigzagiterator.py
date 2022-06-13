@@ -22,9 +22,7 @@ class ZigZagIterator:
         """
         :rtype: bool
         """
-        if self.queue:
-            return True
-        return False
+        return bool(self.queue)
 
 
 l1 = [1, 2]

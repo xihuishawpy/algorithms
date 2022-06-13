@@ -20,7 +20,7 @@ def multiply(multiplicand: list, multiplier: list) -> list:
         raise Exception(
             "Multiplicand matrix not compatible with Multiplier matrix.")
     # create a result matrix
-    result = [[0] * multiplier_col for i in range(multiplicand_row)]
+    result = [[0] * multiplier_col for _ in range(multiplicand_row)]
     for i in range(multiplicand_row):
         for j in range(multiplier_col):
             for k in range(len(multiplier)):

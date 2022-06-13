@@ -50,7 +50,7 @@ if __name__ == '__main__':
     def print_matrix(matrix, name):
         print('{}:\n['.format(name))
         for row in matrix:
-            print('  {}'.format(row))
+            print(f'  {row}')
         print(']\n')
 
     matrix = [

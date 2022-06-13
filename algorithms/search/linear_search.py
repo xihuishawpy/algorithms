@@ -9,7 +9,4 @@ def linear_search(array, query):
     There are no restrictions on the order of the elements in the array.
     If the element couldn't be found, returns -1.
     """
-    for i, value in enumerate(array):
-        if value == query:
-            return i
-    return -1
+    return next((i for i, value in enumerate(array) if value == query), -1)

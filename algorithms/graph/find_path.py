@@ -10,13 +10,16 @@ def find_path(graph, start, end, path=[]):
     path = path + [start]
     if start == end:
         return path
-    if not start in graph:
+    if start not in graph:
         return None
-    for node in graph[start]:
-        if node not in path:
-            newpath = find_path(graph, node, end, path)
-            return newpath
-    return None
+    return next(
+        (
+            find_path(graph, node, end, path)
+            for node in graph[start]
+            if node not in path
+        ),
+        None,
+    )
 
 # pylint: disable=dangerous-default-value
 def find_all_path(graph, start, end, path=[]):
@@ -26,14 +29,13 @@ def find_all_path(graph, start, end, path=[]):
     path = path + [start]
     if start == end:
         return [path]
-    if not start in graph:
+    if start not in graph:
         return []
     paths = []
     for node in graph[start]:
         if node not in path:
             newpaths = find_all_path(graph, node, end, path)
-            for newpath in newpaths:
-                paths.append(newpath)
+            paths.extend(iter(newpaths))
     return paths
 
 def find_shortest_path(graph, start, end, path=[]):
@@ -48,8 +50,7 @@ def find_shortest_path(graph, start, end, path=[]):
     shortest = None
     for node in graph[start]:
         if node not in path:
-            newpath = find_shortest_path(graph, node, end, path)
-            if newpath:
+            if newpath := find_shortest_path(graph, node, end, path):
                 if not shortest or len(newpath) < len(shortest):
                     shortest = newpath
     return shortest

@@ -25,11 +25,8 @@ def helper(n, length):
     result = []
     for middle in middles:
         if n != length:
-            result.append("0" + middle + "0")
-        result.append("8" + middle + "8")
-        result.append("1" + middle + "1")
-        result.append("9" + middle + "6")
-        result.append("6" + middle + "9")
+            result.append(f"0{middle}0")
+        result.extend((f"8{middle}8", f"1{middle}1", f"9{middle}6", f"6{middle}9"))
     return result
 
 def strobogrammatic_in_range(low, high):
@@ -61,9 +58,6 @@ def helper2(n, length):
     res = []
     for mid in mids:
         if n != length:
-            res.append("0"+mid+"0")
-        res.append("1"+mid+"1")
-        res.append("6"+mid+"9")
-        res.append("9"+mid+"6")
-        res.append("8"+mid+"8")
+            res.append(f"0{mid}0")
+        res.extend((f"1{mid}1", f"6{mid}9", f"9{mid}6", f"8{mid}8"))
     return res

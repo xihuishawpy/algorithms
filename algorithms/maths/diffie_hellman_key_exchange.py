@@ -16,12 +16,12 @@ def prime_check(num):
 
     if num <= 1:
         return False
-    if num == 2 or num == 3:
+    if num in [2, 3]:
         return True
     if num % 2 == 0 or num % 3 == 0:
         return False
     j = 5
-    while j * j <= num:
+    while j**2 <= num:
         if num % j == 0 or num % (j + 2) == 0:
             return False
         j += 6
@@ -41,10 +41,7 @@ def find_order(a, n):
     if math.gcd(a, n) != 1:
         print ("a and n should be relative prime!")
         return -1
-    for i in range(1, n):
-        if pow(a, i) % n == 1:
-            return i
-    return -1
+    return next((i for i in range(1, n) if pow(a, i) % n == 1), -1)
 
 
 """

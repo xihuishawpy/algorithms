@@ -51,8 +51,8 @@ def min_heap_sort(arr, simulation=False):
     iteration = 0
     if simulation:
         print("iteration",iteration,":",*arr)
-        
-    for i in range(0, len(arr) - 1):
+
+    for i in range(len(arr) - 1):
         iteration = min_heapify(arr, i, simulation, iteration)
 
     return arr
@@ -77,7 +77,7 @@ def min_heapify(arr, start, simulation, iteration):
             if child + 1 <= end - start and arr[child + start] > arr[
                 child + 1 + start]:
                 child = child + 1
-            
+
             # Swap if child is less than parent
             if arr[child + start] < arr[current_parent + start]:
                 arr[current_parent + start], arr[child + start] = \

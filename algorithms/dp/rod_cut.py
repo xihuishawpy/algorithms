@@ -23,6 +23,6 @@ def cut_rod(price):
 
 # Driver program to test above functions
 arr = [1, 5, 8, 9, 10, 17, 17, 20]
-print("Maximum Obtainable Value is " + str(cut_rod(arr)))
+print(f"Maximum Obtainable Value is {str(cut_rod(arr))}")
 
 # This code is contributed by Bhavya Jain

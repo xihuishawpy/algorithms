@@ -21,7 +21,7 @@ class Node():
 def print_linked_list(head):
     string = ""
     while head.next:
-        string += str(head.val) + " -> "
+        string += f"{str(head.val)} -> "
         head = head.next
     string += str(head.val)
     print(string)
@@ -36,14 +36,13 @@ def partition(head, x):
         if int(current.val) >= x:
             if not right:
                 right = current
+        elif left:
+            prev.next = current.next
+            left.next = current
+            left = current
+            left.next = right
         else:
-            if not left:
-                left = current
-            else:
-                prev.next = current.next
-                left.next = current
-                left = current
-                left.next = right
+            left = current
         if prev and prev.next is None:
             break
         # cache previous value in case it needs to be pointed elsewhere

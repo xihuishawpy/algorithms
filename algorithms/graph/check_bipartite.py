@@ -15,7 +15,7 @@ def check_bipartite(adj_list):
 
     # Divide vertexes in the graph into set_type 0 and 1
     # Initialize all set_types as -1
-    set_type = [-1 for v in range(vertices)]
+    set_type = [-1 for _ in range(vertices)]
     set_type[0] = 0
 
     queue = [0]

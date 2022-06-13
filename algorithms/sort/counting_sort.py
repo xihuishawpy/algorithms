@@ -19,7 +19,7 @@ def counting_sort(arr):
             arr[i] += -m
     k = max(arr)
     temp_arr = [0] * (k + 1)
-    for i in range(0, len(arr)):
+    for i in range(len(arr)):
         temp_arr[arr[i]] = temp_arr[arr[i]] + 1
     # temp_array[i] contain the times the number i appear in arr
 

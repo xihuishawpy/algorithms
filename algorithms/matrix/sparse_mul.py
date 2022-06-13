@@ -58,12 +58,11 @@ def multiply(self, a, b):
     if len(b) != n:
         raise Exception("A's column number must be equal to B's row number.")
     c = [[0 for _ in range(l)] for _ in range(m)]
-    table_b = {}
-    for k, row in enumerate(b):
-        table_b[k] = {}
-        for j, eleB in enumerate(row):
-            if eleB:
-                table_b[k][j] = eleB
+    table_b = {
+        k: {j: eleB for j, eleB in enumerate(row) if eleB}
+        for k, row in enumerate(b)
+    }
+
     for i, row in enumerate(a):
         for k, eleA in enumerate(row):
             if eleA:
@@ -84,7 +83,6 @@ def multiply(self, a, b):
     m, n = len(a), len(b[0])
     if len(b) != n:
         raise Exception("A's column number must be equal to B's row number.")
-    l = len(b[0])
     table_a, table_b = {}, {}
     for i, row in enumerate(a):
         for j, ele in enumerate(row):
@@ -98,7 +96,7 @@ def multiply(self, a, b):
                 if i not in table_b:
                     table_b[i] = {}
                 table_b[i][j] = ele
-    c = [[0 for j in range(l)] for i in range(m)]
+    c = [[0 for j in range(len(b[0]))] for _ in range(m)]
     for i in table_a:
         for k in table_a[i]:
             if k not in table_b:

@@ -39,11 +39,10 @@ def invert_matrix(m):
         print("Invalid matrix: matrix is square, but singular (determinant = 0)")
         return [[-4]]
 
-    # Calculation
     elif len(m) == 2:
         # simple case
         multiplier = 1 / get_determinant(m)
-        inverted = [[multiplier] * len(m) for n in range(len(m))]
+        inverted = [[multiplier] * len(m) for _ in range(len(m))]
         inverted[0][1] = inverted[0][1] * -1 * m[0][1]
         inverted[1][0] = inverted[1][0] * -1 * m[1][0]
         inverted[0][0] = multiplier * m[1][1]
@@ -68,24 +67,20 @@ def get_determinant(m):
     if len(m) == 2:
         # trivial case
         return (m[0][0] * m[1][1]) - (m[0][1] * m[1][0])
-    else:
-        sign = 1
-        det = 0
-        for i in range(len(m)):
-            det += sign * m[0][i] * get_determinant(get_minor(m, 0, i))
-            sign *= -1
-        return det
+    sign = 1
+    det = 0
+    for i in range(len(m)):
+        det += sign * m[0][i] * get_determinant(get_minor(m, 0, i))
+        sign *= -1
+    return det
 
 
 def get_matrix_of_minors(m):
     """get the matrix of minors and alternate signs"""
-    matrix_of_minors = [[0 for i in range(len(m))] for j in range(len(m))]
+    matrix_of_minors = [[0 for _ in range(len(m))] for _ in range(len(m))]
     for row in range(len(m)):
         for col in range(len(m[0])):
-            if (row + col) % 2 == 0:
-                sign = 1
-            else:
-                sign = -1
+            sign = 1 if (row + col) % 2 == 0 else -1
             matrix_of_minors[row][col] = sign * get_determinant(get_minor(m, row, col))
     return matrix_of_minors
 
@@ -118,7 +113,4 @@ def array_is_matrix(m):
     if len(m) == 0:
         return False
     first_col = len(m[0])
-    for row in m:
-        if len(row) != first_col:
-            return False
-    return True
+    return all(len(row) == first_col for row in m)

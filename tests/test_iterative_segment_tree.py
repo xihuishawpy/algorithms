@@ -5,9 +5,7 @@ import unittest
 
 
 def gcd(a, b):
-    if b == 0:
-        return a
-    return gcd(b, a % b)
+    return a if b == 0 else gcd(b, a % b)
 
 
 class TestSegmentTree(unittest.TestCase):
@@ -93,7 +91,7 @@ class TestSegmentTree(unittest.TestCase):
             self.__test_segments_helper(segment_tree, fnc, arr)
 
     def __test_segments_helper(self, seg_tree, fnc, arr):
-        for i in range(0, len(arr)):
+        for i in range(len(arr)):
             for j in range(i, len(arr)):
                 range_value = reduce(fnc, arr[i:j + 1])
                 self.assertEqual(seg_tree.query(i, j), range_value)

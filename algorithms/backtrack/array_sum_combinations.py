@@ -26,15 +26,15 @@ def array_sum_combinations(A, B, C, target):
             sum += elem
         if sum >= target or len(constructed_sofar) >= 3:
             to_stop = True
-            if sum == target and 3 == len(constructed_sofar):
+            if sum == target and len(constructed_sofar) == 3:
                 reached_target = True
         return to_stop, reached_target
 
     def construct_candidates(constructed_sofar):
         array = A
-        if 1 == len(constructed_sofar):
+        if len(constructed_sofar) == 1:
             array = B
-        elif 2 == len(constructed_sofar):
+        elif len(constructed_sofar) == 2:
             array = C
         return array
 
@@ -67,10 +67,7 @@ def unique_array_sum_combinations(A, B, C, target):
     Complexity: O(n(m+p))
     """
     def check_sum(n, *nums):
-        if sum(x for x in nums) == n:
-            return (True, nums)
-        else:
-            return (False, nums)
+        return (True, nums) if sum(nums) == n else (False, nums)
 
     pro = itertools.product(A, B, C)
     func = partial(check_sum, target)

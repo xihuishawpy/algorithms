@@ -41,15 +41,11 @@ def maximum_flow_dfs(adjacency_matrix):
         #save parent nodes
         path = [0]*len(new_array)
 
-        #initialize stack for DFS
-        stack = []
-
         #initial setting
         visited[0] = 1
-        stack.append(0)
-
+        stack = [0]
         #DFS to find path
-        while len(stack) > 0:
+        while stack:
             #pop from queue
             src = stack.pop()
             for k in range(len(new_array)):

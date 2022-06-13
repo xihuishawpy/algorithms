@@ -51,6 +51,5 @@ def hosoya_testing(height):
     """
     res = []
     for i in range(height):
-        for j in range(i + 1):
-            res.append(hosoya(i, j))
+        res.extend(hosoya(i, j) for j in range(i + 1))
     return res

@@ -39,10 +39,8 @@ def ladder_length(begin_word, end_word, word_list):
     if sum(c1 != c2 for c1, c2 in zip(begin_word, end_word)) == 1:
         return 1
 
-    begin_set = set()
-    end_set = set()
-    begin_set.add(begin_word)
-    end_set.add(end_word)
+    begin_set = {begin_word}
+    end_set = {end_word}
     result = 2
     while begin_set and end_set:
 

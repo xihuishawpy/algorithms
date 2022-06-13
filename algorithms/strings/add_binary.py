@@ -22,5 +22,5 @@ def add_binary(a, b):
             j -= 1
         s = chr(c % 2 + zero) + s
         c //= 2 
-        
+
     return s

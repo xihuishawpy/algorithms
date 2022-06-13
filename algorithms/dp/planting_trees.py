@@ -26,7 +26,7 @@ def planting_trees(trees, length, width):
     """
     trees = [0] + trees
 
-    n_pairs = int(len(trees)/2)
+    n_pairs = len(trees) // 2
 
     space_between_pairs = length/(n_pairs-1)
 

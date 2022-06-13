@@ -41,7 +41,7 @@ def generate_key(k, seed=None):
         """calculate the inverse of a mod m
         that is, find b such that (a * b) % m == 1"""
         b = 1
-        while not (a * b) % m == 1:
+        while (a * b) % m != 1:
             b += 1
         return b
 
@@ -51,10 +51,7 @@ def generate_key(k, seed=None):
         def is_prime(num):
             if num == 2:
                 return True
-            for i in range(2, int(num ** 0.5) + 1):
-                if num % i == 0:
-                    return False
-            return True
+            return all(num % i != 0 for i in range(2, int(num ** 0.5) + 1))
 
         random.seed(seed)
         while True:
