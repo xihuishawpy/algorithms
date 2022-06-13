@@ -20,7 +20,7 @@ def knuth_morris_pratt(text : Sequence, pattern : Sequence) -> List[int]:
     """
     n = len(text)
     m = len(pattern)
-    pi = [0 for i in range(m)]
+    pi = [0 for _ in range(m)]
     i = 0
     j = 0
     # making pi table

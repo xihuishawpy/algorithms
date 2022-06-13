@@ -19,7 +19,7 @@ def bogo_sort(arr, simulation=False):
             if arr[i] > arr[i+1]:
                 return False
             i += 1
-            
+
 
         return True
     while not is_sorted(arr):

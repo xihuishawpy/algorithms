@@ -24,7 +24,7 @@ class AbstractStack(metaclass=ABCMeta):
 
     def __str__(self):
         result = " ".join(map(str, self))
-        return 'Top-> ' + result
+        return f'Top-> {result}'
 
     def is_empty(self):
         return self._top == -1

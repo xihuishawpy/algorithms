@@ -17,9 +17,7 @@ equal to the number of 1s in the binary representation."""
 def count_ones_recur(n):
     """Using Brian Kernighan's Algorithm. (Recursive Approach)"""
 
-    if not n:
-        return 0
-    return 1 + count_ones_recur(n & (n-1))
+    return 1 + count_ones_recur(n & (n-1)) if n else 0
 
 
 def count_ones_iter(n):

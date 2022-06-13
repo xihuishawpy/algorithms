@@ -48,10 +48,7 @@ def one_sparse(array):
 #Helper function to check that every entry in the list is either 0 or  the same as the
 #sum of signs
 def _check_every_number_in_bitsum(bitsum,sum_signs):
-    for val in bitsum:
-        if val != 0 and val != sum_signs :
-            return False
-    return True
+    return all(val in [0, sum_signs] for val in bitsum)
 
 # Adds bit representation value to bitsum array
 def _get_bit_sum(bitsum,val,sign):

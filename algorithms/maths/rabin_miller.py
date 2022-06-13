@@ -25,11 +25,11 @@ def is_prime(n, k):
         """
         x = pow(int(a), int(d), int(n))
 
-        if x == 1 or x == n - 1:
+        if x in [1, n - 1]:
             return False
 
         for _ in range(r - 1):
-            x = pow(int(x), int(2), int(n))
+            x = pow(int(x), 2, int(n))
 
             if x == 1:
                 return True

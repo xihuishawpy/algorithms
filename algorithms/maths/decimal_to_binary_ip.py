@@ -29,7 +29,5 @@ def decimal_to_binary_ip(ip):
     Convert dotted-decimal ip address to binary representation with help of decimal_to_binary_util
     """
     values = ip.split('.')
-    binary_list = []
-    for val in values:
-        binary_list.append(decimal_to_binary_util(val))
+    binary_list = [decimal_to_binary_util(val) for val in values]
     return '.'.join(binary_list)

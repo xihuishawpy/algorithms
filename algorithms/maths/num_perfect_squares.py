@@ -37,11 +37,11 @@ def num_perfect_squares(number):
     if number % 8 == 7:
         return 4
 
-    # By now we know that the number wasn't of the form 4^a(8b + 7) so it can be expressed as a sum
-    # of 3 or less perfect squares. Try first to express it as a sum of 2 perfect squares, and if
-    # that fails, we know finally that it can be expressed as a sum of 3 perfect squares.
-    for i in range(1, int(math.sqrt(number)) + 1):
-        if int(math.sqrt(number - i**2))**2 == number - i**2:
-            return 2
-
-    return 3
+    return next(
+        (
+            2
+            for i in range(1, int(math.sqrt(number)) + 1)
+            if int(math.sqrt(number - i**2)) ** 2 == number - i**2
+        ),
+        3,
+    )

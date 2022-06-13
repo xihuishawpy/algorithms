@@ -102,7 +102,7 @@ def kruskal(vertex_count, edges, forest):
                 # edges will be discarted, so, we can stop here
                 break
 
-    return sum([edge.weight for edge in mst])
+    return sum(edge.weight for edge in mst)
 
 
 def main():

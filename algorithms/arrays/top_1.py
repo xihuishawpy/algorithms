@@ -26,12 +26,7 @@ def top_1(arr):
             values[i] = 1
 
     f_val = max(values.values())
-        
-    for i in values.keys():
-        if values[i] == f_val:
-            result.append(i)
-        else:
-            continue
-    
+
+    result.extend(i for i in values if values[i] == f_val)
     return result
     

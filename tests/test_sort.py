@@ -29,11 +29,7 @@ def is_sorted(array):
     :param array: Array to check if sorted
     :return: True if sorted in ascending order, else False
     """
-    for i in range(len(array) - 1):
-        if array[i] > array[i + 1]:
-            return False
-
-    return True
+    return all(array[i] <= array[i + 1] for i in range(len(array) - 1))
 
 
 class TestSuite(unittest.TestCase):

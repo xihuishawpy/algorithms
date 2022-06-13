@@ -27,7 +27,7 @@ def word_break(word, word_dict):
     dp_array = [False] * (len(word)+1)
     dp_array[0] = True
     for i in range(1, len(word)+1):
-        for j in range(0, i):
+        for j in range(i):
             if dp_array[j] and word[j:i] in word_dict:
                 dp_array[i] = True
                 break

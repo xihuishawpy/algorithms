@@ -34,7 +34,6 @@ def word_pattern(pattern, str):
                 return False
             dict[pattern[i]] = list_str[i]
             set_value.add(list_str[i])
-        else:
-            if dict[pattern[i]] != list_str[i]:
-                return False
+        elif dict[pattern[i]] != list_str[i]:
+            return False
     return True

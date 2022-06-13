@@ -21,8 +21,7 @@ class TestSuite(unittest.TestCase):
 
     def test_first_occurrence(self):
         def helper(array, query):
-            idx = array.index(query) if query in array else None
-            return idx
+            return array.index(query) if query in array else None
         array = [1, 1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
         self.assertEqual(first_occurrence(array, 1), helper(array, 1))
         self.assertEqual(first_occurrence(array, 3), helper(array, 3))

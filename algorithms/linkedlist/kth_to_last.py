@@ -12,8 +12,8 @@ def kth_to_last_eval(head, k):
     if not isinstance(k, int) or not head.val:
         return False
 
-    nexts = '.'.join(['next' for n in range(1, k+1)])
-    seeker = str('.'.join(['head', nexts]))
+    nexts = '.'.join(['next' for _ in range(1, k+1)])
+    seeker = '.'.join(['head', nexts])
 
     while head:
         if eval(seeker) is None:
@@ -32,7 +32,7 @@ def kth_to_last_dict(head, k):
     """
     if not (head and k > -1):
         return False
-    d = dict()
+    d = {}
     count = 0
     while head:
         d[count] = head
@@ -51,7 +51,7 @@ def kth_to_last(head, k):
         return False
     p1 = head
     p2 = head
-    for i in range(1, k+1):
+    for _ in range(1, k+1):
         if p1 is None:
             # Went too far, k is not valid
             raise IndexError
@@ -65,7 +65,7 @@ def kth_to_last(head, k):
 def print_linked_list(head):
     string = ""
     while head.next:
-        string += head.val + " -> "
+        string += f"{head.val} -> "
         head = head.next
     string += head.val
     print(string)
@@ -96,7 +96,7 @@ def test():
     try:
         assert kth.val == "D"
     except AssertionError as e:
-        e.args += ("Expecting D, got %s" % kth.val,)
+        e.args += (f"Expecting D, got {kth.val}", )
         raise
 
     # test kth_to_last_dict
@@ -104,7 +104,7 @@ def test():
     try:
         assert kth.val == "D"
     except AssertionError as e:
-        e.args += ("Expecting D, got %s" % kth.val,)
+        e.args += (f"Expecting D, got {kth.val}", )
         raise
 
     # test kth_to_last
@@ -112,7 +112,7 @@ def test():
     try:
         assert kth.val == "D"
     except AssertionError as e:
-        e.args += ("Expecting D, got %s" % kth.val,)
+        e.args += (f"Expecting D, got {kth.val}", )
         raise
     print("all passed.")
 

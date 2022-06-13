@@ -118,10 +118,9 @@ class LinkedListQueue(AbstractQueue):
         node = QueueNode(value)
         if self._front is None:
             self._front = node
-            self._rear = node
         else:
             self._rear.next = node
-            self._rear = node
+        self._rear = node
         self._size += 1
 
     def dequeue(self):

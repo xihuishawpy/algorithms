@@ -34,7 +34,6 @@ def is_isomorphic(s, t):
                 return False
             dict[s[i]] = t[i]
             set_value.add(t[i])
-        else:
-            if dict[s[i]] != t[i]:
-                return False
+        elif dict[s[i]] != t[i]:
+            return False
     return True

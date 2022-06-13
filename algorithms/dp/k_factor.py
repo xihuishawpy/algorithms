@@ -37,7 +37,11 @@ def find_k_factor(length, k_factor):
     length -- integer
     k_factor -- integer
     """
-    mat=[[[0 for i in range(4)]for j in range((length-1)//3+2)]for k in range(length+1)]
+    mat = [
+        [[0 for _ in range(4)] for _ in range((length - 1) // 3 + 2)]
+        for _ in range(length + 1)
+    ]
+
     if 3*k_factor+1>length:
         return 0
     #base cases

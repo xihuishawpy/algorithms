@@ -102,11 +102,7 @@ class HuffmanReader:
         return True
 
     def get_bit(self, buff_limit=8):
-        if self._load_byte(buff_limit):
-            bit = self.buffer.pop(0)
-            return bit
-        else:
-            return -1
+        return self.buffer.pop(0) if self._load_byte(buff_limit) else -1
 
     def get_byte(self):
         if self._load_byte():
@@ -213,11 +209,10 @@ class TreeFinder:
             self._reset()
             return True
 
-        if self.current_node.sign is not None:
-            self._reset(self.current_node.sign)
-            return True
-        else:
+        if self.current_node.sign is None:
             return False
+        self._reset(self.current_node.sign)
+        return True
 
     def _reset(self, found=""):
         self.found = found
@@ -276,11 +271,9 @@ class HuffmanCoding:
 
     @staticmethod
     def _encode_and_write_signs_to_file(file, writer: HuffmanWriter, codes: dict):
-        sign = file.read(1)
-        while sign:
+        while sign := file.read(1):
             int_char = int.from_bytes(sign, "big")
             writer.write_bits(codes[int_char])
-            sign = file.read(1)
 
     @staticmethod
     def _get_char_frequency(file) -> dict:
@@ -299,7 +292,7 @@ class HuffmanCoding:
 
     @staticmethod
     def _generate_codes(tree: Node) -> dict:
-        codes = dict()
+        codes = {}
         HuffmanCoding._go_through_tree_and_create_codes(tree, "", codes)
         return codes
 
@@ -322,7 +315,12 @@ class HuffmanCoding:
             dict_codes[tree.sign] = code
 
         if tree.left:
-            HuffmanCoding._go_through_tree_and_create_codes(tree.left, code + "0", dict_codes)
+            HuffmanCoding._go_through_tree_and_create_codes(
+                tree.left, f"{code}0", dict_codes
+            )
+
 
         if tree.right:
-            HuffmanCoding._go_through_tree_and_create_codes(tree.right, code + "1", dict_codes)
+            HuffmanCoding._go_through_tree_and_create_codes(
+                tree.right, f"{code}1", dict_codes
+            )

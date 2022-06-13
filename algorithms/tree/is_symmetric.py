@@ -21,17 +21,11 @@ Bonus points if you could solve it both recursively and iteratively.
 
 # TC: O(b) SC: O(log n)
 def is_symmetric(root):
-    if root is None:
-        return True
-    return helper(root.left, root.right)
+    return True if root is None else helper(root.left, root.right)
 
 
 def helper(p, q):
-    if p is None and q is None:
-        return True
-    if p is not None or q is not None or q.val != p.val:
-        return False
-    return helper(p.left, q.right) and helper(p.right, q.left)
+    return p is None and q is None
 
 
 def is_symmetric_iterative(root):

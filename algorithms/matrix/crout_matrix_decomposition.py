@@ -29,8 +29,8 @@ I think the complexity should be O(n^3).
 
 def crout_matrix_decomposition(A):
     n = len(A)
-    L = [[0.0] * n for i in range(n)]
-    U = [[0.0] * n for i in range(n)]
+    L = [[0.0] * n for _ in range(n)]
+    U = [[0.0] * n for _ in range(n)]
     for j in range(n):
         U[j][j] = 1.0
         for i in range(j, n):

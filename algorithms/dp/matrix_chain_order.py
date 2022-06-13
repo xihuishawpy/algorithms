@@ -13,8 +13,8 @@ def matrix_chain_order(array):
     array -- int[]
     """
     n = len(array)
-    matrix = [[0 for x in range(n)] for x in range(n)]
-    sol = [[0 for x in range(n)] for x in range(n)]
+    matrix = [[0 for _ in range(n)] for _ in range(n)]
+    sol = [[0 for _ in range(n)] for _ in range(n)]
     for chain_length in range(2, n):
         for a in range(1, n-chain_length+1):
             b = a+chain_length-1
@@ -36,7 +36,7 @@ def print_optimal_solution(optimal_solution,i,j):
     j -- int[]
     """
     if i==j:
-        print("A" + str(i),end = " ")
+        print(f"A{str(i)}", end = " ")
     else:
         print("(", end=" ")
         print_optimal_solution(optimal_solution, i, optimal_solution[i][j])
@@ -54,7 +54,7 @@ def main():
     # 30*35 35*15 15*5 5*10 10*20 20*25
     matrix, optimal_solution = matrix_chain_order(array)
 
-    print("No. of Operation required: "+str((matrix[1][length-1])))
+    print(f"No. of Operation required: {str(matrix[1][length-1])}")
     print_optimal_solution(optimal_solution,1,length-1)
 
 if __name__ == '__main__':

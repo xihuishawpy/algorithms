@@ -21,7 +21,4 @@ def find_order(a, n):
     if math.gcd(a, n) != 1:
         print ("a and n should be relative prime!")
         return -1
-    for i in range(1, n):
-        if pow(a, i) % n == 1:
-            return i
-    return -1
+    return next((i for i in range(1, n) if pow(a, i) % n == 1), -1)

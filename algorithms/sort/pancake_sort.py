@@ -14,7 +14,7 @@ def pancake_sort(arr):
         return arr
     for cur in range(len(arr), 1, -1):
         #Finding index of maximum number in arr
-        index_max = arr.index(max(arr[0:cur]))
+        index_max = arr.index(max(arr[:cur]))
         if index_max+1 != cur:
             #Needs moving
             if index_max != 0:

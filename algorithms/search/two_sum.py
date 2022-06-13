@@ -68,4 +68,4 @@ def two_sum2(numbers, target):
         if current_sum > target:
             right = right - 1
         else:
-            left = left + 1
+            left += 1

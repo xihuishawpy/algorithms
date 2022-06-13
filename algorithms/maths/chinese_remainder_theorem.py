@@ -17,12 +17,12 @@ def solve_chinese_remainder(nums : List[int], rems : List[int]):
     All numbers in nums needs to be pariwise coprime otherwise an exception is raised
     returns x: the smallest value for x that satisfies the system of equations
     """
-    if not len(nums) == len(rems):
+    if len(nums) != len(rems):
         raise Exception("nums and rems should have equal length")
-    if not len(nums) > 0:
+    if not nums:
         raise Exception("Lists nums and rems need to contain at least one element")
     for num in nums:
-        if not num > 1:
+        if num <= 1:
             raise Exception("All numbers in nums needs to be > 1")
     if not _check_coprime(nums):
         raise Exception("All pairs of numbers in nums are not coprime")
@@ -30,9 +30,7 @@ def solve_chinese_remainder(nums : List[int], rems : List[int]):
     x = 1
     while True:
         i = 0
-        while i < k:
-            if x % nums[i] != rems[i]:
-                break
+        while i < k and x % nums[i] == rems[i]:
             i += 1
         if i == k:
             return x

@@ -10,10 +10,7 @@ def encode(strs):
     :type strs: List[str]
     :rtype: str
     """
-    res = ''
-    for string in strs.split():
-        res += str(len(string)) + ":" + string
-    return res
+    return ''.join(f"{len(string)}:{string}" for string in strs.split())
 
 def decode(s):
     """Decodes a single string to a list of strings.

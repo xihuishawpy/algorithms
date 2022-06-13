@@ -8,9 +8,7 @@ return 964176192
 """
 def reverse_bits(n):
     m = 0
-    i = 0
-    while i < 32:
+    for _ in range(32):
         m = (m << 1) + (n & 1)
         n >>= 1
-        i += 1
     return m

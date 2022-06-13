@@ -17,7 +17,7 @@ import collections
 
 class TrieNode(object):
     def __init__(self, letter, is_terminal=False):
-        self.children = dict()
+        self.children = {}
         self.letter = letter
         self.is_terminal = is_terminal
 
@@ -41,14 +41,12 @@ class WordDictionary(object):
             # if dot
             if letter == ".":
                 if i == len(word) - 1: # if last character
-                    for child in cur.children.itervalues():
-                        if child.is_terminal:
-                            return True
-                    return False
-                for child in cur.children.itervalues():
-                    if self.search(word[i+1:], child) == True:
-                        return True
-                return False
+                    return any(child.is_terminal for child in cur.children.itervalues())
+                return any(
+                    self.search(word[i + 1 :], child) == True
+                    for child in cur.children.itervalues()
+                )
+
             # if letter
             if letter not in cur.children:
                 return False
@@ -72,7 +70,7 @@ class WordDictionary2(object):
         for v in self.word_dict[len(word)]:
             # match xx.xx.x with yyyyyyy
             for i, ch in enumerate(word):
-                if ch != v[i] and ch != '.':
+                if ch not in [v[i], '.']:
                     break
             else:
                 return True

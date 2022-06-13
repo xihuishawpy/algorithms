@@ -32,12 +32,12 @@ Output: 1 (Because the password isn't strong, but she can make it strong by addi
 def strong_password(n, password):
     count_error = 0
     # Return the minimum number of characters to make the password strong
-    if any(i.isdigit() for i in password) == False:
-        count_error = count_error + 1
-    if any(i.islower() for i in password) == False:
-        count_error = count_error + 1
-    if any(i.isupper() for i in password) == False:
-        count_error = count_error + 1
-    if any(i in '!@#$%^&*()-+' for i in password) == False:
-        count_error = count_error + 1
+    if not any(i.isdigit() for i in password):
+        count_error += 1
+    if not any(i.islower() for i in password):
+        count_error += 1
+    if not any(i.isupper() for i in password):
+        count_error += 1
+    if all(i not in '!@#$%^&*()-+' for i in password):
+        count_error += 1
     return max(count_error, 6 - n)

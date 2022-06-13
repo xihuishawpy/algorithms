@@ -30,16 +30,16 @@ class Fenwick_Tree(object):
         """
 
         s = 0
-      
+
         # index in bit_tree[] is 1 more than the index in arr[] 
         i = i+1
-      
+
         # Traverse ancestors of bit_tree[index] 
         while i > 0: 
-      
+
             # Add current element of bit_tree to sum 
             s += bit_tree[i] 
-      
+
             # Move index to parent node in getSum View 
             i -= i & (-i) 
         return s 

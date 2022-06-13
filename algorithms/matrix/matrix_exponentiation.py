@@ -4,7 +4,7 @@ def multiply(matA: list, matB: list) -> list:
     Time Complexity: O(n^3)
     """
     n = len(matA)
-    matC = [[0 for i in range(n)] for j in range(n)]
+    matC = [[0 for _ in range(n)] for _ in range(n)]
 
     for i in range(n):
         for j in range(n):
@@ -19,7 +19,7 @@ def identity(n: int) -> list:
     Returns the Identity matrix of size n x n
     Time Complexity: O(n^2)
     """
-    I = [[0 for i in range(n)] for j in range(n)]
+    I = [[0 for _ in range(n)] for _ in range(n)]
 
     for i in range(n):
         I[i][i] = 1

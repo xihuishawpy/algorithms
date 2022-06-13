@@ -24,22 +24,18 @@ def spiral_traversal(matrix):
     col_end = len(matrix[0]) - 1
 
     while row_begin <= row_end and col_begin <= col_end:
-        for i in range(col_begin, col_end+1):
-            res.append(matrix[row_begin][i])
+        res.extend(matrix[row_begin][i] for i in range(col_begin, col_end+1))
         row_begin += 1
 
-        for i in range(row_begin, row_end+1):
-            res.append(matrix[i][col_end])
+        res.extend(matrix[i][col_end] for i in range(row_begin, row_end+1))
         col_end -= 1
 
         if row_begin <= row_end:
-            for i in range(col_end, col_begin-1, -1):
-                res.append(matrix[row_end][i])
+            res.extend(matrix[row_end][i] for i in range(col_end, col_begin-1, -1))
         row_end -= 1
 
         if col_begin <= col_end:
-            for i in range(row_end, row_begin-1, -1):
-                res.append(matrix[i][col_begin])
+            res.extend(matrix[i][col_begin] for i in range(row_end, row_begin-1, -1))
         col_begin += 1
 
     return res

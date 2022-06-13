@@ -18,7 +18,7 @@ def move_zeros(array):
                 zeros += 1
             else:
                 result.append(i)
-    
+
     result.extend([0] * zeros)
     return result
 

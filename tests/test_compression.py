@@ -16,7 +16,7 @@ class TestHuffmanCoding(unittest.TestCase):
         import random
         random.seed(1951)
         with open(self.file_in_name, "wb") as file_in:
-            for i in range(10000):
+            for _ in range(10000):
                 file_in.write(bytes([random.randrange(0, 256)]))
 
     def test_huffman_coding(self):
@@ -53,20 +53,14 @@ class TestEliasCoding(unittest.TestCase):
         correct_result = ['0', '00', '100', '101', '11000', '11001', '11010',
                           '11011', '1110000', '1110001', '1110010']
 
-        result = []
-        for i in range(11):
-            result.append(elias_gamma(i))
-
+        result = [elias_gamma(i) for i in range(11)]
         self.assertEqual(correct_result, result)
 
     def test_elias_delta(self):
         correct_result = ['0', '000', '1000', '1001', '10100', '10101',
                           '10110', '10111', '11000000', '11000001', '11000010']
 
-        result = []
-        for i in range(11):
-            result.append(elias_delta(i))
-
+        result = [elias_delta(i) for i in range(11)]
         self.assertEqual(correct_result, result)
 
 

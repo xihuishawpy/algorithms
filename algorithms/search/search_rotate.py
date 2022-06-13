@@ -52,11 +52,10 @@ def search_rotate(array, val):
                 high = mid - 1
             else:
                 low = mid + 1
+        elif array[mid] <= val <= array[high]:
+            low = mid + 1
         else:
-            if array[mid] <= val <= array[high]:
-                low = mid + 1
-            else:
-                high = mid - 1
+            high = mid - 1
 
     return -1
 

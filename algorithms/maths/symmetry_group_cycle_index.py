@@ -75,7 +75,7 @@ def cycle_product(m1: Monomial, m2: Monomial) -> Monomial:
     assert isinstance(m1, Monomial) and isinstance(m2, Monomial)
     A = m1.variables
     B = m2.variables
-    result_variables = dict()
+    result_variables = {}
     for i in A:
         for j in B:
             k = lcm(i, j)
@@ -155,5 +155,4 @@ def get_cycle_index_sym(n: int) -> Polynomial:
             Monomial({4: 1}, Fraction(1, 4)),
         ])
     }
-    result = cycle_index_sym_helper(n, memo)
-    return result
+    return cycle_index_sym_helper(n, memo)

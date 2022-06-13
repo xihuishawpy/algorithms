@@ -23,8 +23,9 @@ def dfs(capacity, flow, visit, vertices, idx, sink, current_flow = 1 << 63):
     for nxt in range(vertices):
         if not visit[nxt] and flow[idx][nxt] < capacity[idx][nxt]:
             available_flow = min(current_flow, capacity[idx][nxt]-flow[idx][nxt])
-            tmp = dfs(capacity, flow, visit, vertices, nxt, sink, available_flow)
-            if tmp:
+            if tmp := dfs(
+                capacity, flow, visit, vertices, nxt, sink, available_flow
+            ):
                 flow[idx][nxt] += tmp
                 flow[nxt][idx] -= tmp
                 return tmp
@@ -41,8 +42,7 @@ def ford_fulkerson(capacity, source, sink):
     flow = [[0]*vertices for _ in range(vertices)]
     while True:
         visit = [False for _ in range(vertices)]
-        tmp = dfs(capacity, flow, visit, vertices, source, sink)
-        if tmp:
+        if tmp := dfs(capacity, flow, visit, vertices, source, sink):
             ret += tmp
         else:
             break
@@ -133,11 +133,11 @@ def dinic(capacity, source, sink):
     V is the number of vertices and E is the number of edges.
     """
     vertices = len(capacity)
-    flow = [[0]*vertices for i in range(vertices)]
+    flow = [[0]*vertices for _ in range(vertices)]
     ret = 0
     while True:
-        level = [-1 for i in range(vertices)]
-        work = [0 for i in range(vertices)]
+        level = [-1 for _ in range(vertices)]
+        work = [0 for _ in range(vertices)]
         if not dinic_bfs(capacity, flow, level, source, sink):
             break
         while True:

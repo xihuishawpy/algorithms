@@ -9,12 +9,12 @@ def pythagoras(opposite, adjacent, hypotenuse):
     Passing "?" will indicate the unknown side.
     """
     try:
-        if opposite == str("?"):
-            return ("Opposite = " + str(((hypotenuse**2) - (adjacent**2))**0.5))
-        if adjacent == str("?"):
-            return ("Adjacent = " + str(((hypotenuse**2) - (opposite**2))**0.5))
-        if hypotenuse == str("?"):
-            return ("Hypotenuse = " + str(((opposite**2) + (adjacent**2))**0.5))
+        if opposite == "?":
+            return f"Opposite = {str(((hypotenuse**2) - (adjacent**2))**0.5)}"
+        if adjacent == "?":
+            return f"Adjacent = {str(((hypotenuse**2) - (opposite**2))**0.5)}"
+        if hypotenuse == "?":
+            return f"Hypotenuse = {str(((opposite**2) + (adjacent**2))**0.5)}"
         return "You already know the answer!"
     except:
         raise ValueError("invalid argument(s) were given.")

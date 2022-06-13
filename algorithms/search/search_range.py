@@ -26,8 +26,7 @@ def search_range(nums, target):
         else:
             break
 
-    for j in range(len(nums) - 1, -1, -1):
-        if nums[j] == target:
-            return [mid, j]
-
-    return [-1, -1]
+    return next(
+        ([mid, j] for j in range(len(nums) - 1, -1, -1) if nums[j] == target),
+        [-1, -1],
+    )

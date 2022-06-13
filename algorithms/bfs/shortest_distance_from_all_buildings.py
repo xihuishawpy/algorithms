@@ -10,7 +10,7 @@ def shortest_distance(grid):
     if not grid or not grid[0]:
         return -1
 
-    matrix = [[[0,0] for i in range(len(grid[0]))] for j in range(len(grid))]
+    matrix = [[[0,0] for _ in range(len(grid[0]))] for _ in range(len(grid))]
 
     count = 0    # count how many building we have visited
     for i in range(len(grid)):

@@ -44,8 +44,6 @@ def cholesky_decomposition(A):
             return None
         V[j][j] = math.pow(sum_diagonal_element, 0.5)
         for i in range(j+1, n):
-            sum_other_element = 0
-            for k in range(j):
-                sum_other_element += V[i][k]*V[j][k]
+            sum_other_element = sum(V[i][k]*V[j][k] for k in range(j))
             V[i][j] = (A[i][j] - sum_other_element)/V[j][j]
     return V

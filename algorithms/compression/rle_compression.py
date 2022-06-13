@@ -20,7 +20,6 @@ def encode_rle(input):
     count = 1
 
     for ch in input:
-
         # Check If the subsequent character does not match
         if ch != prev_ch:
             # Add the count and character
@@ -32,8 +31,7 @@ def encode_rle(input):
         else:
             # Otherwise increment the counter
             count += 1
-    else:
-        return encoded_str + (str(count) + prev_ch)
+    return encoded_str + (str(count) + prev_ch)
 
 
 def decode_rle(input):

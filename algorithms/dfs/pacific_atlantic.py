@@ -48,9 +48,7 @@ def pacific_atlantic(matrix):
         dfs(pacific, matrix, float("-inf"), 0, i)
         dfs(atlantic, matrix, float("-inf"), n-1, i)
     for i in range(n):
-        for j in range(m):
-            if pacific[i][j] and atlantic[i][j]:
-                res.append([i, j])
+        res.extend([i, j] for j in range(m) if pacific[i][j] and atlantic[i][j])
     return res
 
 def dfs(grid, matrix, height, i, j):

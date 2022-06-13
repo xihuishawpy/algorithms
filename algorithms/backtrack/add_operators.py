@@ -31,12 +31,17 @@ def add_operators(num, target):
             if pos == 0:
                 dfs(res, path + str(cur), num, target, i+1, cur, cur)
             else:
-                dfs(res, path + "+" + str(cur), num, target,
-                    i+1, prev + cur, cur)
-                dfs(res, path + "-" + str(cur), num, target,
-                    i+1, prev - cur, -cur)
-                dfs(res, path + "*" + str(cur), num, target,
-                    i+1, prev - multed + multed * cur, multed * cur)
+                dfs(res, f"{path}+{cur}", num, target, i+1, prev + cur, cur)
+                dfs(res, f"{path}-{cur}", num, target, i+1, prev - cur, -cur)
+                dfs(
+                    res,
+                    f"{path}*{cur}",
+                    num,
+                    target,
+                    i + 1,
+                    prev - multed + multed * cur,
+                    multed * cur,
+                )
 
     res = []
     if not num:

@@ -17,8 +17,7 @@ def preorder(root):
     res = []
     if not root:
         return res
-    stack = []
-    stack.append(root)
+    stack = [root]
     while stack:
         root = stack.pop()
         res.append(root.val)

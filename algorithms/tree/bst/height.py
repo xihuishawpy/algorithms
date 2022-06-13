@@ -20,10 +20,7 @@ from bst import Node
 from bst import bst
 
 def height(root):
-    if root is None:
-        return 0
-    else:
-        return 1 + max(height(root.left), height(root.right))
+    return 0 if root is None else 1 + max(height(root.left), height(root.right))
 
 """
     The tree is created for testing:

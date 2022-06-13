@@ -26,7 +26,7 @@ def prims_minimum_spanning(graph_used):
     prim = set()
     mincost=0
 
-    while len(heap) > 0:
+    while heap:
         cost, node = heapq.heappop(heap)
         if node in vis:
             continue

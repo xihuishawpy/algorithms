@@ -24,7 +24,7 @@ def quick_sort_recur(arr, first, last, iteration, simulation):
 
 def partition(arr, first, last):
     wall = first
-    for pos in range(first, last):
+    for pos in range(wall, last):
         if arr[pos] < arr[last]:  # last is the pivot
             arr[pos], arr[wall] = arr[wall], arr[pos]
             wall += 1

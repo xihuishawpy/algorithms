@@ -67,9 +67,7 @@ class BTree:
             new_root.children.append(self.root)
             self.root = new_root
             self._split_child(new_root, 0)
-            self._insert_to_nonfull_node(self.root, key)
-        else:
-            self._insert_to_nonfull_node(self.root, key)
+        self._insert_to_nonfull_node(self.root, key)
 
     def _insert_to_nonfull_node(self, node: Node, key):
         i = len(node.keys) - 1
@@ -124,8 +122,7 @@ class BTree:
                 while i < number_of_keys and key > node.keys[i]:
                     i += 1
 
-                action_performed = self._repair_tree(node, i)
-                if action_performed:
+                if action_performed := self._repair_tree(node, i):
                     return self._remove_key(node, key)
                 else:
                     return self._remove_key(node.children[i], key)
@@ -218,24 +215,19 @@ class BTree:
     def _find_largest_and_delete_in_left_subtree(self, node: Node):
         if node.is_leaf:
             return node.keys.pop()
-        else:
-            ch_index = len(node.children) - 1
-            self._repair_tree(node, ch_index)
-            largest_key_in_subtree = self._find_largest_and_delete_in_left_subtree(
-                node.children[len(node.children) - 1])
+        ch_index = len(node.children) - 1
+        self._repair_tree(node, ch_index)
             # self._repair_tree(node, ch_index)
-            return largest_key_in_subtree
+        return self._find_largest_and_delete_in_left_subtree(
+            node.children[len(node.children) - 1]
+        )
 
     def _find_largest_and_delete_in_right_subtree(self, node: Node):
         if node.is_leaf:
             return node.keys.pop(0)
-        else:
-            ch_index = 0
-            self._repair_tree(node, ch_index)
-            largest_key_in_subtree = self._find_largest_and_delete_in_right_subtree(
-                node.children[0])
+        self._repair_tree(node, 0)
             # self._repair_tree(node, ch_index)
-            return largest_key_in_subtree
+        return self._find_largest_and_delete_in_right_subtree(node.children[0])
 
     def traverse_tree(self):
         self._traverse_tree(self.root)

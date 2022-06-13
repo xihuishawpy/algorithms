@@ -53,7 +53,7 @@ def misras_gries(array,k=2):
         if freq >= len(array) / k:
             frequencies[suspect] = freq
 
-    return frequencies if len(frequencies) > 0 else None
+    return frequencies or None
 
 
 def _count_frequency(array,element):

@@ -42,7 +42,7 @@ def int_divide(decompose):
 
     decompose -- integer
     """
-    arr = [[0 for i in range(decompose + 1)] for j in range(decompose + 1)]
+    arr = [[0 for _ in range(decompose + 1)] for _ in range(decompose + 1)]
     arr[1][1] = 1
     for i in range(1, decompose + 1):
         for j in range(1, decompose + 1):
